@@ -689,12 +689,6 @@ def _handle_ngram(server_args: ServerArgs) -> None:
 
     _disable_overlap_schedule_for_cpu(server_args)
 
-    if server_args.max_running_requests is None:
-        server_args.max_running_requests = 48
-        logger.warning(
-            "Max running requests is reset to 48 for speculative decoding. You can override this by explicitly setting --max-running-requests."
-        )
-
     server_args.enable_mixed_chunk = False
     server_args.speculative_eagle_topk = server_args.speculative_ngram_max_bfs_breadth
     if server_args.speculative_num_draft_tokens is None:
